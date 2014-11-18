@@ -2,7 +2,7 @@ unbound-pmda
 ============
 
 PCP PMDA for Unbound. Currently adds almost 100 metrics for unbound. All
-total.*, unwanted.*, num.rrset.*, num.answer.* and num.query.* metrics.
+total., unwanted., num.rrset., num.answer. and num.query. metrics.
 
 
 ### Install
