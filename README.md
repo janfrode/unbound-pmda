@@ -32,7 +32,7 @@ total., unwanted., num.rrset., num.answer. and num.query. metrics.
 	% $ pmval unbound.num.query.type.A
 
 	metric:    unbound.num.query.type.A
-	host:      dns1-no-srv3.lysetele.net
+	host:      dns1.example.com
 	semantics: cumulative counter (converting to rate)
 	units:     count (converting to count / sec)
 	samples:   all
