@@ -29,7 +29,7 @@ total., unwanted., num.rrset., num.answer. and num.query. metrics.
 	unbound.num.query.class.CLASS65
 	unbound.num.query.class.CLASS6
 	<snip>
-	% $ pmval unbound.num.query.type.A
+	% pmval unbound.num.query.type.A
 
 	metric:    unbound.num.query.type.A
 	host:      dns1.example.com
