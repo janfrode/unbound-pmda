@@ -248,6 +248,16 @@ class UnboundPMDA(PMDA):
             return [self.values['num.query.edns.present'], 1]
         elif item == 94:
             return [self.values['num.query.edns.DO'], 1]
+        elif item == 95:
+            return [self.values['mem.total.sbrk'], 1]
+        elif item == 96:
+            return [self.values['mem.cache.rrset'], 1]
+        elif item == 97:
+            return [self.values['mem.cache.message'], 1]
+        elif item == 98:
+            return [self.values['mem.mod.iterator'], 1]
+        elif item == 99:
+            return [self.values['mem.mod.validator'], 1]
         return [c_api.PM_ERR_PMID, 0]
 
     def setup_unbound_metrics(self, name):
@@ -920,6 +930,41 @@ class UnboundPMDA(PMDA):
                 c_api.PM_TYPE_U64, c_api.PM_INDOM_NULL, c_api.PM_SEM_COUNTER,
                 pmUnits(0, 0, 1, 0, 0, c_api.PM_COUNT_ONE)),
         'num.query.edns.DO')
+
+        self.values['mem.total.sbrk'] = 0
+        self.add_metric(name + '.mem.total.sbrk', pmdaMetric(
+                self.pmid(0, 95),
+                c_api.PM_TYPE_U64, c_api.PM_INDOM_NULL, c_api.PM_SEM_INSTANT,
+                pmUnits(0, 0, 1, 0, 0, c_api.PM_COUNT_ONE)),
+        'Estimate of the heap size of the program in number of  bytes.')
+
+        self.values['mem.cache.rrset'] = 0
+        self.add_metric(name + '.mem.cache.rrset', pmdaMetric(
+                self.pmid(0, 96),
+                c_api.PM_TYPE_U64, c_api.PM_INDOM_NULL, c_api.PM_SEM_INSTANT,
+                pmUnits(0, 0, 1, 0, 0, c_api.PM_COUNT_ONE)),
+        'Memory in bytes in use by the RRset cache.')
+
+        self.values['mem.cache.message'] = 0
+        self.add_metric(name + '.mem.cache.message', pmdaMetric(
+                self.pmid(0, 97),
+                c_api.PM_TYPE_U64, c_api.PM_INDOM_NULL, c_api.PM_SEM_INSTANT,
+                pmUnits(0, 0, 1, 0, 0, c_api.PM_COUNT_ONE)),
+        'Memory in bytes in use by the message cache.')
+
+        self.values['mem.mod.iterator'] = 0
+        self.add_metric(name + '.mem.mod.iterator', pmdaMetric(
+                self.pmid(0, 98),
+                c_api.PM_TYPE_U64, c_api.PM_INDOM_NULL, c_api.PM_SEM_INSTANT,
+                pmUnits(0, 0, 1, 0, 0, c_api.PM_COUNT_ONE)),
+        'Memory in bytes in use by the iterator module.')
+
+        self.values['mem.mod.validator'] = 0
+        self.add_metric(name + '.mem.mod.validator', pmdaMetric(
+                self.pmid(0, 99),
+                c_api.PM_TYPE_U64, c_api.PM_INDOM_NULL, c_api.PM_SEM_INSTANT,
+                pmUnits(0, 0, 1, 0, 0, c_api.PM_COUNT_ONE)),
+        'Memory in bytes in use by the validator module.')
 
     def __init__(self, name, domain):
         PMDA.__init__(self, name, domain)
