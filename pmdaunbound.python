@@ -29,24 +29,20 @@ class UnboundPMDA(PMDA):
         stdout, stderr = p.communicate()
         stdoutlines = string.split(stdout.strip(), '\n')
         for line in stdoutlines:
-            if any( [ line.startswith( 'total' ),
-                      line.startswith( 'unwanted' ),  
-                      line.startswith( 'num.rrset' ),
-                      line.startswith( 'num.answer' ),
-                      line.startswith( 'num.query' ) ]
-            ):
                 keyval = string.split(line, '=')
-                if (
-                    keyval[0] == "time.now" or
-		    keyval[0] == "time.up" or 
-		    keyval[0] == "time.elapsed" or 
-		    keyval[0] == "total.requestlist.avg" or
-		    keyval[0] == "total.recursion.time.avg" or
-		    keyval[0] == "total.recursion.time.median"
-                   ):
-		      self.values[keyval[0]] = float(keyval[1])
-		else:
-                      self.values[keyval[0]] = long(keyval[1])
+		# only try to populate known metrics:
+		if keyval[0] in self.values:
+                    if (
+                        keyval[0] == "time.now" or
+		        keyval[0] == "time.up" or 
+		        keyval[0] == "time.elapsed" or 
+		        keyval[0] == "total.requestlist.avg" or
+		        keyval[0] == "total.recursion.time.avg" or
+		        keyval[0] == "total.recursion.time.median"
+                       ):
+		          self.values[keyval[0]] = float(keyval[1])
+		    else:
+                          self.values[keyval[0]] = long(keyval[1])
 
     def unbound_fetch_callback(self, cluster, item, inst):
         '''
