@@ -29,7 +29,12 @@ class UnboundPMDA(PMDA):
         stdout, stderr = p.communicate()
         stdoutlines = string.split(stdout.strip(), '\n')
         for line in stdoutlines:
-            if line.startswith( 'total' ) or line.startswith( 'unwanted' ) or line.startswith( 'num.rrset' ) or line.startswith( 'num.answer' ) or line.startswith( 'num.query' ):
+            if any( [ line.startswith( 'total' ),
+                      line.startswith( 'unwanted' ),  
+                      line.startswith( 'num.rrset' ),
+                      line.startswith( 'num.answer' ),
+                      line.startswith( 'num.query' ) ]
+            ):
                 keyval = string.split(line, '=')
                 if (
                     keyval[0] == "time.now" or

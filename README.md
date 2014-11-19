@@ -5,7 +5,7 @@ PCP PMDA for Unbound. Currently adds almost 100 metrics for unbound. All
 total., unwanted., num.rrset., num.answer. and num.query. metrics.
 
 
-### Install
+### Install (assuming PCP is installed, and running)
 	mkdir /var/lib/pcp/pmdas/unbound/
 	cp Install Remove pmdaunbound.python /var/lib/pcp/pmdas/unbound/
 	cd /var/lib/pcp/pmdas/unbound/
