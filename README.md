@@ -1,8 +1,8 @@
 unbound-pmda
 ============
 
-PCP PMDA for Unbound. Currently adds almost 100 metrics for unbound. All
-total., unwanted., num.rrset., num.answer. and num.query. metrics.
+Performance Metrics Domain Agent (PMDA) for Unbound. Currently adds 95 metrics for unbound. All
+total, unwanted, num.rrset, num.answer and num.query metrics.
 
 
 ### Install (assuming PCP is installed, and running)
