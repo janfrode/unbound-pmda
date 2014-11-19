@@ -40,3 +40,7 @@ total, mem, unwanted, num.rrset, num.answer and num.query metrics.
             1.118E+04
             1.169E+04
 
+
+But the real value is in logging all these metrics with pmarchive, together with other system
+metrics, and being able to replay archives in pmchart, pmwtf, etc.. for analyzing what happened
+yesterday evening when customers were complaining about something.
