@@ -347,14 +347,14 @@ class UnboundPMDA(PMDA):
         self.add_metric(name + '.total.recursion.time.avg', pmdaMetric(
                 self.pmid(0, 11),
                 c_api.PM_TYPE_FLOAT, c_api.PM_INDOM_NULL, c_api.PM_SEM_INSTANT,
-                pmUnits(0, 0, 1, 0, 0, c_api.PM_COUNT_ONE)),
+                pmUnits(0, 1, 0, 0, c_api.PM_TIME_SEC, 0)),
         'Average time it took to answer queries that needed recursive processing.')
 
         self.values['total.recursion.time.median'] = 0
         self.add_metric(name + '.total.recursion.time.median', pmdaMetric(
                 self.pmid(0, 12),
                 c_api.PM_TYPE_FLOAT, c_api.PM_INDOM_NULL, c_api.PM_SEM_INSTANT,
-                pmUnits(0, 0, 1, 0, 0, c_api.PM_COUNT_ONE)),
+                pmUnits(0, 1, 0, 0, c_api.PM_TIME_SEC, 0)),
         'Median time it took to answer queries that needed recursive processing.')
 
         self.values['unwanted.queries'] = 0
@@ -935,35 +935,35 @@ class UnboundPMDA(PMDA):
         self.add_metric(name + '.mem.total.sbrk', pmdaMetric(
                 self.pmid(0, 95),
                 c_api.PM_TYPE_U64, c_api.PM_INDOM_NULL, c_api.PM_SEM_INSTANT,
-                pmUnits(0, 0, 1, 0, 0, c_api.PM_COUNT_ONE)),
+                pmUnits(1, 0, 0, c_api.PM_SPACE_BYTE, 0, 0)),
         'Estimate of the heap size of the program in number of  bytes.')
 
         self.values['mem.cache.rrset'] = 0
         self.add_metric(name + '.mem.cache.rrset', pmdaMetric(
                 self.pmid(0, 96),
                 c_api.PM_TYPE_U64, c_api.PM_INDOM_NULL, c_api.PM_SEM_INSTANT,
-                pmUnits(0, 0, 1, 0, 0, c_api.PM_COUNT_ONE)),
+                pmUnits(1, 0, 0, c_api.PM_SPACE_BYTE, 0, 0)),
         'Memory in bytes in use by the RRset cache.')
 
         self.values['mem.cache.message'] = 0
         self.add_metric(name + '.mem.cache.message', pmdaMetric(
                 self.pmid(0, 97),
                 c_api.PM_TYPE_U64, c_api.PM_INDOM_NULL, c_api.PM_SEM_INSTANT,
-                pmUnits(0, 0, 1, 0, 0, c_api.PM_COUNT_ONE)),
+                pmUnits(1, 0, 0, c_api.PM_SPACE_BYTE, 0, 0)),
         'Memory in bytes in use by the message cache.')
 
         self.values['mem.mod.iterator'] = 0
         self.add_metric(name + '.mem.mod.iterator', pmdaMetric(
                 self.pmid(0, 98),
                 c_api.PM_TYPE_U64, c_api.PM_INDOM_NULL, c_api.PM_SEM_INSTANT,
-                pmUnits(0, 0, 1, 0, 0, c_api.PM_COUNT_ONE)),
+                pmUnits(1, 0, 0, c_api.PM_SPACE_BYTE, 0, 0)),
         'Memory in bytes in use by the iterator module.')
 
         self.values['mem.mod.validator'] = 0
         self.add_metric(name + '.mem.mod.validator', pmdaMetric(
                 self.pmid(0, 99),
                 c_api.PM_TYPE_U64, c_api.PM_INDOM_NULL, c_api.PM_SEM_INSTANT,
-                pmUnits(0, 0, 1, 0, 0, c_api.PM_COUNT_ONE)),
+                pmUnits(1, 0, 0, c_api.PM_SPACE_BYTE, 0, 0)),
         'Memory in bytes in use by the validator module.')
 
     def __init__(self, name, domain):
