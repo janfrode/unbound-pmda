@@ -5,8 +5,6 @@ Performance Metrics Domain Agent exporting Unbound statistics.
 import cpmapi as c_api
 from pcp.pmapi import pmUnits
 from pcp.pmda import PMDA, pmdaMetric, pmdaIndom
-from resource import getpagesize
-from os import getenv, listdir
 from subprocess import Popen, PIPE
 import string
 
@@ -47,7 +45,7 @@ class UnboundPMDA(PMDA):
     def unbound_fetch_callback(self, cluster, item, inst):
         '''
         Main fetch callback - looks up value associated with requested PMID
-        (from zswap_fetch), converts units if needed, then returns a list of
+        (from unbound_fetch), converts units if needed, then returns a list of
         value,status (single pair) for the requested pmid
         '''
         # self.log("fetch callback for %d.%d[%d]" % (cluster, item, inst))
