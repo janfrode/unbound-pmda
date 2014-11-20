@@ -258,6 +258,86 @@ class UnboundPMDA(PMDA):
             return [self.values['mem.mod.iterator'], 1]
         elif item == 99:
             return [self.values['mem.mod.validator'], 1]
+        elif item == 100:
+            return [self.values['histogram.000000.000000.to.000000.000001'], 1]
+        elif item == 101:
+            return [self.values['histogram.000000.000001.to.000000.000002'], 1]
+        elif item == 102:
+            return [self.values['histogram.000000.000002.to.000000.000004'], 1]
+        elif item == 103:
+            return [self.values['histogram.000000.000004.to.000000.000008'], 1]
+        elif item == 104:
+            return [self.values['histogram.000000.000008.to.000000.000016'], 1]
+        elif item == 105:
+            return [self.values['histogram.000000.000016.to.000000.000032'], 1]
+        elif item == 106:
+            return [self.values['histogram.000000.000032.to.000000.000064'], 1]
+        elif item == 107:
+            return [self.values['histogram.000000.000064.to.000000.000128'], 1]
+        elif item == 108:
+            return [self.values['histogram.000000.000128.to.000000.000256'], 1]
+        elif item == 109:
+            return [self.values['histogram.000000.000256.to.000000.000512'], 1]
+        elif item == 110:
+            return [self.values['histogram.000000.000512.to.000000.001024'], 1]
+        elif item == 111:
+            return [self.values['histogram.000000.001024.to.000000.002048'], 1]
+        elif item == 112:
+            return [self.values['histogram.000000.002048.to.000000.004096'], 1]
+        elif item == 113:
+            return [self.values['histogram.000000.004096.to.000000.008192'], 1]
+        elif item == 114:
+            return [self.values['histogram.000000.008192.to.000000.016384'], 1]
+        elif item == 115:
+            return [self.values['histogram.000000.016384.to.000000.032768'], 1]
+        elif item == 116:
+            return [self.values['histogram.000000.032768.to.000000.065536'], 1]
+        elif item == 117:
+            return [self.values['histogram.000000.065536.to.000000.131072'], 1]
+        elif item == 118:
+            return [self.values['histogram.000000.131072.to.000000.262144'], 1]
+        elif item == 119:
+            return [self.values['histogram.000000.262144.to.000000.524288'], 1]
+        elif item == 120:
+            return [self.values['histogram.000000.524288.to.000001.000000'], 1]
+        elif item == 121:
+            return [self.values['histogram.000001.000000.to.000002.000000'], 1]
+        elif item == 122:
+            return [self.values['histogram.000002.000000.to.000004.000000'], 1]
+        elif item == 123:
+            return [self.values['histogram.000004.000000.to.000008.000000'], 1]
+        elif item == 124:
+            return [self.values['histogram.000008.000000.to.000016.000000'], 1]
+        elif item == 125:
+            return [self.values['histogram.000016.000000.to.000032.000000'], 1]
+        elif item == 126:
+            return [self.values['histogram.000032.000000.to.000064.000000'], 1]
+        elif item == 127:
+            return [self.values['histogram.000064.000000.to.000128.000000'], 1]
+        elif item == 128:
+            return [self.values['histogram.000128.000000.to.000256.000000'], 1]
+        elif item == 129:
+            return [self.values['histogram.000256.000000.to.000512.000000'], 1]
+        elif item == 130:
+            return [self.values['histogram.000512.000000.to.001024.000000'], 1]
+        elif item == 131:
+            return [self.values['histogram.001024.000000.to.002048.000000'], 1]
+        elif item == 132:
+            return [self.values['histogram.002048.000000.to.004096.000000'], 1]
+        elif item == 133:
+            return [self.values['histogram.004096.000000.to.008192.000000'], 1]
+        elif item == 134:
+            return [self.values['histogram.008192.000000.to.016384.000000'], 1]
+        elif item == 135:
+            return [self.values['histogram.016384.000000.to.032768.000000'], 1]
+        elif item == 136:
+            return [self.values['histogram.032768.000000.to.065536.000000'], 1]
+        elif item == 137:
+            return [self.values['histogram.065536.000000.to.131072.000000'], 1]
+        elif item == 138:
+            return [self.values['histogram.131072.000000.to.262144.000000'], 1]
+        elif item == 139:
+            return [self.values['histogram.262144.000000.to.524288.000000'], 1]
         return [c_api.PM_ERR_PMID, 0]
 
     def setup_unbound_metrics(self, name):
@@ -965,6 +1045,286 @@ class UnboundPMDA(PMDA):
                 c_api.PM_TYPE_U64, c_api.PM_INDOM_NULL, c_api.PM_SEM_INSTANT,
                 pmUnits(1, 0, 0, c_api.PM_SPACE_BYTE, 0, 0)),
         'Memory in bytes in use by the validator module.')
+
+        self.values['histogram.000000.000000.to.000000.000001'] = 0
+        self.add_metric(name + '.histogram.000000.000000.to.000000.000001', pmdaMetric(
+                self.pmid(0, 100),
+                c_api.PM_TYPE_U64, c_api.PM_INDOM_NULL, c_api.PM_SEM_COUNTER,
+                pmUnits(0, 0, 1, 0, 0, c_api.PM_COUNT_ONE)),
+        'Recursive queries whose reply time fit between the lower and upper bound.')
+
+        self.values['histogram.000000.000001.to.000000.000002'] = 0
+        self.add_metric(name + '.histogram.000000.000001.to.000000.000002', pmdaMetric(
+                self.pmid(0, 101),
+                c_api.PM_TYPE_U64, c_api.PM_INDOM_NULL, c_api.PM_SEM_COUNTER,
+                pmUnits(0, 0, 1, 0, 0, c_api.PM_COUNT_ONE)),
+        'Recursive queries whose reply time fit between the lower and upper bound.')
+
+        self.values['histogram.000000.000002.to.000000.000004'] = 0
+        self.add_metric(name + '.histogram.000000.000002.to.000000.000004', pmdaMetric(
+                self.pmid(0, 102),
+                c_api.PM_TYPE_U64, c_api.PM_INDOM_NULL, c_api.PM_SEM_COUNTER,
+                pmUnits(0, 0, 1, 0, 0, c_api.PM_COUNT_ONE)),
+        'Recursive queries whose reply time fit between the lower and upper bound.')
+
+        self.values['histogram.000000.000004.to.000000.000008'] = 0
+        self.add_metric(name + '.histogram.000000.000004.to.000000.000008', pmdaMetric(
+                self.pmid(0, 103),
+                c_api.PM_TYPE_U64, c_api.PM_INDOM_NULL, c_api.PM_SEM_COUNTER,
+                pmUnits(0, 0, 1, 0, 0, c_api.PM_COUNT_ONE)),
+        'Recursive queries whose reply time fit between the lower and upper bound.')
+
+        self.values['histogram.000000.000008.to.000000.000016'] = 0
+        self.add_metric(name + '.histogram.000000.000008.to.000000.000016', pmdaMetric(
+                self.pmid(0, 104),
+                c_api.PM_TYPE_U64, c_api.PM_INDOM_NULL, c_api.PM_SEM_COUNTER,
+                pmUnits(0, 0, 1, 0, 0, c_api.PM_COUNT_ONE)),
+        'Recursive queries whose reply time fit between the lower and upper bound.')
+
+        self.values['histogram.000000.000016.to.000000.000032'] = 0
+        self.add_metric(name + '.histogram.000000.000016.to.000000.000032', pmdaMetric(
+                self.pmid(0, 105),
+                c_api.PM_TYPE_U64, c_api.PM_INDOM_NULL, c_api.PM_SEM_COUNTER,
+                pmUnits(0, 0, 1, 0, 0, c_api.PM_COUNT_ONE)),
+        'Recursive queries whose reply time fit between the lower and upper bound.')
+
+        self.values['histogram.000000.000032.to.000000.000064'] = 0
+        self.add_metric(name + '.histogram.000000.000032.to.000000.000064', pmdaMetric(
+                self.pmid(0, 106),
+                c_api.PM_TYPE_U64, c_api.PM_INDOM_NULL, c_api.PM_SEM_COUNTER,
+                pmUnits(0, 0, 1, 0, 0, c_api.PM_COUNT_ONE)),
+        'Recursive queries whose reply time fit between the lower and upper bound.')
+
+        self.values['histogram.000000.000064.to.000000.000128'] = 0
+        self.add_metric(name + '.histogram.000000.000064.to.000000.000128', pmdaMetric(
+                self.pmid(0, 107),
+                c_api.PM_TYPE_U64, c_api.PM_INDOM_NULL, c_api.PM_SEM_COUNTER,
+                pmUnits(0, 0, 1, 0, 0, c_api.PM_COUNT_ONE)),
+        'Recursive queries whose reply time fit between the lower and upper bound.')
+
+        self.values['histogram.000000.000128.to.000000.000256'] = 0
+        self.add_metric(name + '.histogram.000000.000128.to.000000.000256', pmdaMetric(
+                self.pmid(0, 108),
+                c_api.PM_TYPE_U64, c_api.PM_INDOM_NULL, c_api.PM_SEM_COUNTER,
+                pmUnits(0, 0, 1, 0, 0, c_api.PM_COUNT_ONE)),
+        'Recursive queries whose reply time fit between the lower and upper bound.')
+
+        self.values['histogram.000000.000256.to.000000.000512'] = 0
+        self.add_metric(name + '.histogram.000000.000256.to.000000.000512', pmdaMetric(
+                self.pmid(0, 109),
+                c_api.PM_TYPE_U64, c_api.PM_INDOM_NULL, c_api.PM_SEM_COUNTER,
+                pmUnits(0, 0, 1, 0, 0, c_api.PM_COUNT_ONE)),
+        'Recursive queries whose reply time fit between the lower and upper bound.')
+
+        self.values['histogram.000000.000512.to.000000.001024'] = 0
+        self.add_metric(name + '.histogram.000000.000512.to.000000.001024', pmdaMetric(
+                self.pmid(0, 110),
+                c_api.PM_TYPE_U64, c_api.PM_INDOM_NULL, c_api.PM_SEM_COUNTER,
+                pmUnits(0, 0, 1, 0, 0, c_api.PM_COUNT_ONE)),
+        'Recursive queries whose reply time fit between the lower and upper bound.')
+
+        self.values['histogram.000000.001024.to.000000.002048'] = 0
+        self.add_metric(name + '.histogram.000000.001024.to.000000.002048', pmdaMetric(
+                self.pmid(0, 111),
+                c_api.PM_TYPE_U64, c_api.PM_INDOM_NULL, c_api.PM_SEM_COUNTER,
+                pmUnits(0, 0, 1, 0, 0, c_api.PM_COUNT_ONE)),
+        'Recursive queries whose reply time fit between the lower and upper bound.')
+
+        self.values['histogram.000000.002048.to.000000.004096'] = 0
+        self.add_metric(name + '.histogram.000000.002048.to.000000.004096', pmdaMetric(
+                self.pmid(0, 112),
+                c_api.PM_TYPE_U64, c_api.PM_INDOM_NULL, c_api.PM_SEM_COUNTER,
+                pmUnits(0, 0, 1, 0, 0, c_api.PM_COUNT_ONE)),
+        'Recursive queries whose reply time fit between the lower and upper bound.')
+
+        self.values['histogram.000000.004096.to.000000.008192'] = 0
+        self.add_metric(name + '.histogram.000000.004096.to.000000.008192', pmdaMetric(
+                self.pmid(0, 113),
+                c_api.PM_TYPE_U64, c_api.PM_INDOM_NULL, c_api.PM_SEM_COUNTER,
+                pmUnits(0, 0, 1, 0, 0, c_api.PM_COUNT_ONE)),
+        'Recursive queries whose reply time fit between the lower and upper bound.')
+
+        self.values['histogram.000000.008192.to.000000.016384'] = 0
+        self.add_metric(name + '.histogram.000000.008192.to.000000.016384', pmdaMetric(
+                self.pmid(0, 114),
+                c_api.PM_TYPE_U64, c_api.PM_INDOM_NULL, c_api.PM_SEM_COUNTER,
+                pmUnits(0, 0, 1, 0, 0, c_api.PM_COUNT_ONE)),
+        'Recursive queries whose reply time fit between the lower and upper bound.')
+
+        self.values['histogram.000000.016384.to.000000.032768'] = 0
+        self.add_metric(name + '.histogram.000000.016384.to.000000.032768', pmdaMetric(
+                self.pmid(0, 115),
+                c_api.PM_TYPE_U64, c_api.PM_INDOM_NULL, c_api.PM_SEM_COUNTER,
+                pmUnits(0, 0, 1, 0, 0, c_api.PM_COUNT_ONE)),
+        'Recursive queries whose reply time fit between the lower and upper bound.')
+
+        self.values['histogram.000000.032768.to.000000.065536'] = 0
+        self.add_metric(name + '.histogram.000000.032768.to.000000.065536', pmdaMetric(
+                self.pmid(0, 116),
+                c_api.PM_TYPE_U64, c_api.PM_INDOM_NULL, c_api.PM_SEM_COUNTER,
+                pmUnits(0, 0, 1, 0, 0, c_api.PM_COUNT_ONE)),
+        'Recursive queries whose reply time fit between the lower and upper bound.')
+
+        self.values['histogram.000000.065536.to.000000.131072'] = 0
+        self.add_metric(name + '.histogram.000000.065536.to.000000.131072', pmdaMetric(
+                self.pmid(0, 117),
+                c_api.PM_TYPE_U64, c_api.PM_INDOM_NULL, c_api.PM_SEM_COUNTER,
+                pmUnits(0, 0, 1, 0, 0, c_api.PM_COUNT_ONE)),
+        'Recursive queries whose reply time fit between the lower and upper bound.')
+
+        self.values['histogram.000000.131072.to.000000.262144'] = 0
+        self.add_metric(name + '.histogram.000000.131072.to.000000.262144', pmdaMetric(
+                self.pmid(0, 118),
+                c_api.PM_TYPE_U64, c_api.PM_INDOM_NULL, c_api.PM_SEM_COUNTER,
+                pmUnits(0, 0, 1, 0, 0, c_api.PM_COUNT_ONE)),
+        'Recursive queries whose reply time fit between the lower and upper bound.')
+
+        self.values['histogram.000000.262144.to.000000.524288'] = 0
+        self.add_metric(name + '.histogram.000000.262144.to.000000.524288', pmdaMetric(
+                self.pmid(0, 119),
+                c_api.PM_TYPE_U64, c_api.PM_INDOM_NULL, c_api.PM_SEM_COUNTER,
+                pmUnits(0, 0, 1, 0, 0, c_api.PM_COUNT_ONE)),
+        'Recursive queries whose reply time fit between the lower and upper bound.')
+
+        self.values['histogram.000000.524288.to.000001.000000'] = 0
+        self.add_metric(name + '.histogram.000000.524288.to.000001.000000', pmdaMetric(
+                self.pmid(0, 120),
+                c_api.PM_TYPE_U64, c_api.PM_INDOM_NULL, c_api.PM_SEM_COUNTER,
+                pmUnits(0, 0, 1, 0, 0, c_api.PM_COUNT_ONE)),
+        'Recursive queries whose reply time fit between the lower and upper bound.')
+
+        self.values['histogram.000001.000000.to.000002.000000'] = 0
+        self.add_metric(name + '.histogram.000001.000000.to.000002.000000', pmdaMetric(
+                self.pmid(0, 121),
+                c_api.PM_TYPE_U64, c_api.PM_INDOM_NULL, c_api.PM_SEM_COUNTER,
+                pmUnits(0, 0, 1, 0, 0, c_api.PM_COUNT_ONE)),
+        'Recursive queries whose reply time fit between the lower and upper bound.')
+
+        self.values['histogram.000002.000000.to.000004.000000'] = 0
+        self.add_metric(name + '.histogram.000002.000000.to.000004.000000', pmdaMetric(
+                self.pmid(0, 122),
+                c_api.PM_TYPE_U64, c_api.PM_INDOM_NULL, c_api.PM_SEM_COUNTER,
+                pmUnits(0, 0, 1, 0, 0, c_api.PM_COUNT_ONE)),
+        'Recursive queries whose reply time fit between the lower and upper bound.')
+
+        self.values['histogram.000004.000000.to.000008.000000'] = 0
+        self.add_metric(name + '.histogram.000004.000000.to.000008.000000', pmdaMetric(
+                self.pmid(0, 123),
+                c_api.PM_TYPE_U64, c_api.PM_INDOM_NULL, c_api.PM_SEM_COUNTER,
+                pmUnits(0, 0, 1, 0, 0, c_api.PM_COUNT_ONE)),
+        'Recursive queries whose reply time fit between the lower and upper bound.')
+
+        self.values['histogram.000008.000000.to.000016.000000'] = 0
+        self.add_metric(name + '.histogram.000008.000000.to.000016.000000', pmdaMetric(
+                self.pmid(0, 124),
+                c_api.PM_TYPE_U64, c_api.PM_INDOM_NULL, c_api.PM_SEM_COUNTER,
+                pmUnits(0, 0, 1, 0, 0, c_api.PM_COUNT_ONE)),
+        'Recursive queries whose reply time fit between the lower and upper bound.')
+
+        self.values['histogram.000016.000000.to.000032.000000'] = 0
+        self.add_metric(name + '.histogram.000016.000000.to.000032.000000', pmdaMetric(
+                self.pmid(0, 125),
+                c_api.PM_TYPE_U64, c_api.PM_INDOM_NULL, c_api.PM_SEM_COUNTER,
+                pmUnits(0, 0, 1, 0, 0, c_api.PM_COUNT_ONE)),
+        'Recursive queries whose reply time fit between the lower and upper bound.')
+
+        self.values['histogram.000032.000000.to.000064.000000'] = 0
+        self.add_metric(name + '.histogram.000032.000000.to.000064.000000', pmdaMetric(
+                self.pmid(0, 126),
+                c_api.PM_TYPE_U64, c_api.PM_INDOM_NULL, c_api.PM_SEM_COUNTER,
+                pmUnits(0, 0, 1, 0, 0, c_api.PM_COUNT_ONE)),
+        'Recursive queries whose reply time fit between the lower and upper bound.')
+
+        self.values['histogram.000064.000000.to.000128.000000'] = 0
+        self.add_metric(name + '.histogram.000064.000000.to.000128.000000', pmdaMetric(
+                self.pmid(0, 127),
+                c_api.PM_TYPE_U64, c_api.PM_INDOM_NULL, c_api.PM_SEM_COUNTER,
+                pmUnits(0, 0, 1, 0, 0, c_api.PM_COUNT_ONE)),
+        'Recursive queries whose reply time fit between the lower and upper bound.')
+
+        self.values['histogram.000128.000000.to.000256.000000'] = 0
+        self.add_metric(name + '.histogram.000128.000000.to.000256.000000', pmdaMetric(
+                self.pmid(0, 128),
+                c_api.PM_TYPE_U64, c_api.PM_INDOM_NULL, c_api.PM_SEM_COUNTER,
+                pmUnits(0, 0, 1, 0, 0, c_api.PM_COUNT_ONE)),
+        'Recursive queries whose reply time fit between the lower and upper bound.')
+
+        self.values['histogram.000256.000000.to.000512.000000'] = 0
+        self.add_metric(name + '.histogram.000256.000000.to.000512.000000', pmdaMetric(
+                self.pmid(0, 129),
+                c_api.PM_TYPE_U64, c_api.PM_INDOM_NULL, c_api.PM_SEM_COUNTER,
+                pmUnits(0, 0, 1, 0, 0, c_api.PM_COUNT_ONE)),
+        'Recursive queries whose reply time fit between the lower and upper bound.')
+
+        self.values['histogram.000512.000000.to.001024.000000'] = 0
+        self.add_metric(name + '.histogram.000512.000000.to.001024.000000', pmdaMetric(
+                self.pmid(0, 130),
+                c_api.PM_TYPE_U64, c_api.PM_INDOM_NULL, c_api.PM_SEM_COUNTER,
+                pmUnits(0, 0, 1, 0, 0, c_api.PM_COUNT_ONE)),
+        'Recursive queries whose reply time fit between the lower and upper bound.')
+
+        self.values['histogram.001024.000000.to.002048.000000'] = 0
+        self.add_metric(name + '.histogram.001024.000000.to.002048.000000', pmdaMetric(
+                self.pmid(0, 131),
+                c_api.PM_TYPE_U64, c_api.PM_INDOM_NULL, c_api.PM_SEM_COUNTER,
+                pmUnits(0, 0, 1, 0, 0, c_api.PM_COUNT_ONE)),
+        'Recursive queries whose reply time fit between the lower and upper bound.')
+
+        self.values['histogram.002048.000000.to.004096.000000'] = 0
+        self.add_metric(name + '.histogram.002048.000000.to.004096.000000', pmdaMetric(
+                self.pmid(0, 132),
+                c_api.PM_TYPE_U64, c_api.PM_INDOM_NULL, c_api.PM_SEM_COUNTER,
+                pmUnits(0, 0, 1, 0, 0, c_api.PM_COUNT_ONE)),
+        'Recursive queries whose reply time fit between the lower and upper bound.')
+
+        self.values['histogram.004096.000000.to.008192.000000'] = 0
+        self.add_metric(name + '.histogram.004096.000000.to.008192.000000', pmdaMetric(
+                self.pmid(0, 133),
+                c_api.PM_TYPE_U64, c_api.PM_INDOM_NULL, c_api.PM_SEM_COUNTER,
+                pmUnits(0, 0, 1, 0, 0, c_api.PM_COUNT_ONE)),
+        'Recursive queries whose reply time fit between the lower and upper bound.')
+
+        self.values['histogram.008192.000000.to.016384.000000'] = 0
+        self.add_metric(name + '.histogram.008192.000000.to.016384.000000', pmdaMetric(
+                self.pmid(0, 134),
+                c_api.PM_TYPE_U64, c_api.PM_INDOM_NULL, c_api.PM_SEM_COUNTER,
+                pmUnits(0, 0, 1, 0, 0, c_api.PM_COUNT_ONE)),
+        'Recursive queries whose reply time fit between the lower and upper bound.')
+
+        self.values['histogram.016384.000000.to.032768.000000'] = 0
+        self.add_metric(name + '.histogram.016384.000000.to.032768.000000', pmdaMetric(
+                self.pmid(0, 135),
+                c_api.PM_TYPE_U64, c_api.PM_INDOM_NULL, c_api.PM_SEM_COUNTER,
+                pmUnits(0, 0, 1, 0, 0, c_api.PM_COUNT_ONE)),
+        'Recursive queries whose reply time fit between the lower and upper bound.')
+
+        self.values['histogram.032768.000000.to.065536.000000'] = 0
+        self.add_metric(name + '.histogram.032768.000000.to.065536.000000', pmdaMetric(
+                self.pmid(0, 136),
+                c_api.PM_TYPE_U64, c_api.PM_INDOM_NULL, c_api.PM_SEM_COUNTER,
+                pmUnits(0, 0, 1, 0, 0, c_api.PM_COUNT_ONE)),
+        'Recursive queries whose reply time fit between the lower and upper bound.')
+
+        self.values['histogram.065536.000000.to.131072.000000'] = 0
+        self.add_metric(name + '.histogram.065536.000000.to.131072.000000', pmdaMetric(
+                self.pmid(0, 137),
+                c_api.PM_TYPE_U64, c_api.PM_INDOM_NULL, c_api.PM_SEM_COUNTER,
+                pmUnits(0, 0, 1, 0, 0, c_api.PM_COUNT_ONE)),
+        'Recursive queries whose reply time fit between the lower and upper bound.')
+
+        self.values['histogram.131072.000000.to.262144.000000'] = 0
+        self.add_metric(name + '.histogram.131072.000000.to.262144.000000', pmdaMetric(
+                self.pmid(0, 138),
+                c_api.PM_TYPE_U64, c_api.PM_INDOM_NULL, c_api.PM_SEM_COUNTER,
+                pmUnits(0, 0, 1, 0, 0, c_api.PM_COUNT_ONE)),
+        'Recursive queries whose reply time fit between the lower and upper bound.')
+
+        self.values['histogram.262144.000000.to.524288.000000'] = 0
+        self.add_metric(name + '.histogram.262144.000000.to.524288.000000', pmdaMetric(
+                self.pmid(0, 139),
+                c_api.PM_TYPE_U64, c_api.PM_INDOM_NULL, c_api.PM_SEM_COUNTER,
+                pmUnits(0, 0, 1, 0, 0, c_api.PM_COUNT_ONE)),
+        'Recursive queries whose reply time fit between the lower and upper bound.')
 
     def __init__(self, name, domain):
         PMDA.__init__(self, name, domain)
