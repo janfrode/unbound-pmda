@@ -8,27 +8,14 @@ total, mem, unwanted, num.rrset, num.answer and num.query metrics.
 ### Install (assuming PCP is installed, and running)
 	mkdir /var/lib/pcp/pmdas/unbound/
 	cp Install Remove pmdaunbound.python /var/lib/pcp/pmdas/unbound/
-	cd /var/lib/pcp/pmdas/unbound/
-	./Install
+	/var/lib/pcp/pmdas/unbound/Install
 
 ### Poll
 
+	% pminfo -fmdtT unbound
+	<lists all details about each unbound metric>
 	% pminfo unbound
-	<snip>
-	unbound.num.query.flags.RD
-	unbound.num.query.flags.TC
-	unbound.num.query.flags.AA
-	unbound.num.query.flags.QR
-	unbound.num.query.ipv6
-	unbound.num.query.tcp
-	unbound.num.query.opcode.QUERY
-	unbound.num.query.class.other
-	unbound.num.query.class.ANY
-	unbound.num.query.class.CLASS240
-	unbound.num.query.class.CLASS115
-	unbound.num.query.class.CLASS65
-	unbound.num.query.class.CLASS6
-	<snip>
+	<lists just the metric names>
 	% pmval unbound.num.query.type.A
 
 	metric:    unbound.num.query.type.A
